@@ -128,9 +128,9 @@ public class DatabaseAccess {
 
     public String des(int id, int test, String con) {
         String hi = "";
-        String my="SELECT MEANING FROM WORD_LIST WHERE WORD="+con;
+        String my = "SELECT MEANING FROM WORD_LIST WHERE WORD=" + con;
 
-        if (test==5) {
+        if (test == 5) {
             Cursor k = database.rawQuery("SELECT WORD FROM WORD_LIST", null);
             if (k.moveToFirst()) {
                 k.moveToPosition(id);
@@ -140,22 +140,28 @@ public class DatabaseAccess {
             k.close();
 
 
-        }
-
-
-        else {
-            Cursor cursor = database.rawQuery("SELECT MEANING FROM WORD_LIST WHERE WORD ='"+con+"'" ,null);
+        } else {
+            Cursor cursor = database.rawQuery("SELECT SENTENCE FROM WORD_LIST WHERE WORD ='" + con + "'", null);
             cursor.moveToFirst();
             while (!cursor.isAfterLast()) {
-                hi=(cursor.getString(0));
+                hi = (cursor.getString(0));
                 cursor.moveToNext();
             }
             cursor.close();
         }
+        if (test == 6) {
+            Cursor cursor = database.rawQuery("SELECT SENTENCE FROM WORD_LIST WHERE MEANING ='" + con + "'", null);
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                hi = (cursor.getString(0));
+                cursor.moveToNext();
+            }
+            cursor.close();
+
+        }
         return hi;
 
     }
-
 }
 
 

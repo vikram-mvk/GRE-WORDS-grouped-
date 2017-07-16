@@ -1,5 +1,7 @@
 package com.grehotwordsgrouped;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.provider.Contacts;
@@ -15,6 +17,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.R.attr.prompt;
 
 public class noun extends AppCompatActivity{
 
@@ -40,7 +44,32 @@ public class noun extends AppCompatActivity{
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, word);
             this.listView.setAdapter(adapter);
 
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view,
+                                           int position, long id) {
+
+
+                AlertDialog.Builder dialog = new AlertDialog.Builder(noun.this);
+                dialog.setCancelable(true);
+                dialog.setTitle(" EXAMPLE : ");
+                databaseAccess.open();
+                int i=(int)id;
+                String data=(String)parent.getItemAtPosition(position);
+
+                String hi=databaseAccess.des(i,6,data);
+                databaseAccess.close();
+                dialog.setMessage(hi);
+
+                final AlertDialog alert = dialog.create();
+                alert.show();
+                return true;
+            }
+        });
+
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     databaseAccess.open();
