@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.grehotwordsgrouped.MainActivity"
+    >
+
+    <Button
+        android:text="VERBS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button2"
+        android:onClick="startverb"
+        android:layout_alignBaseline="@+id/button"
+        android:layout_alignBottom="@+id/button"
+        android:layout_alignStart="@+id/button4"
+        android:layout_marginStart="43dp" />
+
+    <Button
+        android:text="NOUNS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button"
+        android:layout_marginTop="13dp"
+        android:onClick="startnoun"
+        tools:onClick="startnoun"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/button5" />
+
+    <Button
+        android:text="Positive ADJECTIVEs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button3"
+        android:onClick="startpadj"
+        android:layout_marginTop="36dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:layout_below="@+id/button"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Take A Test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button5"
+        android:onClick="test"
+        android:layout_marginTop="34dp"
+        android:hapticFeedbackEnabled="true"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_below="@+id/button4"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Negative ADJECTIVEs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button4"
+        android:onClick="startnadj"
+        android:fontFamily="casual"
+        android:gravity="right|center_vertical|center_horizontal"
+        android:hapticFeedbackEnabled="false"
+        android:layout_alignTop="@+id/button3"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>
