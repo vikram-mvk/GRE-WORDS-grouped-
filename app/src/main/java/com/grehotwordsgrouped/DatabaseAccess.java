@@ -141,7 +141,7 @@ public class DatabaseAccess {
 
 
         } else {
-            Cursor cursor = database.rawQuery("SELECT SENTENCE FROM WORD_LIST WHERE WORD ='" + con + "'", null);
+            Cursor cursor = database.rawQuery("SELECT MEANING FROM WORD_LIST WHERE WORD ='" + con + "'", null);
             cursor.moveToFirst();
             while (!cursor.isAfterLast()) {
                 hi = (cursor.getString(0));
@@ -150,7 +150,7 @@ public class DatabaseAccess {
             cursor.close();
         }
         if (test == 6) {
-            Cursor cursor = database.rawQuery("SELECT SENTENCE FROM WORD_LIST WHERE MEANING ='" + con + "'", null);
+            Cursor cursor = database.rawQuery("SELECT SENTENCE FROM WORD_LIST WHERE WORD OR MEANING ='" + con + "'", null);
             cursor.moveToFirst();
             while (!cursor.isAfterLast()) {
                 hi = (cursor.getString(0));
