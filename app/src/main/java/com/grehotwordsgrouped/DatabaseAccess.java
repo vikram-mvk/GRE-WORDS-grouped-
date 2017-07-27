@@ -20,22 +20,12 @@ public class DatabaseAccess {
     private SQLiteDatabase database;
     private static DatabaseAccess instance;
 
-    /**
-     * Private constructor to aboid object creation from outside classes.
-     *
-     * @param context
-     */
 
     private DatabaseAccess(Context context) {
         this.openHelper = new DatabaseOpenHelper(context);
     }
 
-    /**
-     * Return a singleton instance of DatabaseAccess.
-     *
-     * @param context the Context
-     * @return the instance of DabaseAccess
-     */
+
     public static DatabaseAccess getInstance(Context context) {
         if (instance == null) {
             instance = new DatabaseAccess(context);
@@ -43,31 +33,21 @@ public class DatabaseAccess {
         return instance;
     }
 
-    /**
-     * Open the database connection.
-     */
+
     public void open() {
         this.database = openHelper.getWritableDatabase();
     }
 
-    /**
-     * Close the database connection.
-     */
     public void close() {
         if (database != null) {
             this.database.close();
         }
     }
 
-    /**
-     * Read all quotes from the database.
-     *
-     * @return a List of quotes
-     */
     public List<String> get(int a) {
         List<String> list = new ArrayList<>();
-        if (a == 2) {
-            Cursor cursor = database.rawQuery("SELECT WORD FROM WORD_LIST WHERE TYPE=2", null);
+
+            Cursor cursor = database.rawQuery("SELECT WORD FROM WORD_LIST WHERE TYPE='"+ a +"'", null);
 
             cursor.moveToFirst();
             while (!cursor.isAfterLast()) {
@@ -76,48 +56,18 @@ public class DatabaseAccess {
             }
             cursor.close();
 
-        }
 
-        if (a == 1) {
-            Cursor cursor = database.rawQuery("SELECT WORD FROM WORD_LIST WHERE TYPE=1", null);
 
-            cursor.moveToFirst();
-            while (!cursor.isAfterLast()) {
-                list.add(cursor.getString(0));
-                cursor.moveToNext();
-            }
-            cursor.close();
-        }
-        if (a == 3) {
-            Cursor cursor = database.rawQuery("SELECT WORD FROM WORD_LIST WHERE TYPE=3", null);
 
-            cursor.moveToFirst();
-            while (!cursor.isAfterLast()) {
-                list.add(cursor.getString(0));
-                cursor.moveToNext();
-            }
-            cursor.close();
-        }
-
-        if (a == 4) {
-            Cursor cursor = database.rawQuery("SELECT WORD FROM WORD_LIST WHERE TYPE=4", null);
-
-            cursor.moveToFirst();
-            while (!cursor.isAfterLast()) {
-                list.add(cursor.getString(0));
-                cursor.moveToNext();
-            }
-            cursor.close();
-        }
         if (a == 5) {
-            Cursor cursor = database.rawQuery("SELECT MEANING FROM WORD_LIST", null);
+            Cursor curso = database.rawQuery("SELECT MEANING FROM WORD_LIST", null);
 
-            cursor.moveToFirst();
-            while (!cursor.isAfterLast()) {
-                list.add(cursor.getString(0));
-                cursor.moveToNext();
+            curso.moveToFirst();
+            while (!curso.isAfterLast()) {
+                list.add(curso.getString(0));
+                curso.moveToNext();
             }
-            cursor.close();
+            curso.close();
         }
 
 
@@ -128,8 +78,6 @@ public class DatabaseAccess {
 
     public String des(int id, int test, String con) {
         String hi = "";
-        String my = "SELECT MEANING FROM WORD_LIST WHERE WORD=" + con;
-
         if (test == 5) {
             Cursor k = database.rawQuery("SELECT WORD FROM WORD_LIST", null);
             if (k.moveToFirst()) {
@@ -149,20 +97,43 @@ public class DatabaseAccess {
             }
             cursor.close();
         }
-        if (test == 6) {
-            Cursor cursor = database.rawQuery("SELECT SENTENCE FROM WORD_LIST WHERE WORD OR MEANING ='" + con + "'", null);
+
+        return hi;
+
+    }
+
+    public String ex(String con,int test) {
+        String hi = "";
+        if(test==5){
+        Cursor cursor = database.rawQuery("SELECT SENTENCE FROM WORD_LIST WHERE MEANING ='" + con + "'", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            hi = (cursor.getString(0));
+            cursor.moveToNext();
+        }
+        cursor.close();}
+        else
+        {
+            Cursor cursor = database.rawQuery("SELECT SENTENCE FROM WORD_LIST WHERE WORD ='" + con + "'", null);
             cursor.moveToFirst();
             while (!cursor.isAfterLast()) {
                 hi = (cursor.getString(0));
                 cursor.moveToNext();
             }
             cursor.close();
-
         }
+
         return hi;
 
     }
 }
+
+
+
+
+
+
+
 
 
 

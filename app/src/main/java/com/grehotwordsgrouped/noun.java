@@ -57,7 +57,7 @@ public class noun extends AppCompatActivity{
                 int i=(int)id;
                 String data=(String)parent.getItemAtPosition(position);
 
-                String hi=databaseAccess.des(i,6,data);
+                String hi=databaseAccess.ex(data,intValue);
                 databaseAccess.close();
                 dialog.setMessage(hi);
 

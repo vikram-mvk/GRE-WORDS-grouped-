@@ -2,10 +2,12 @@ package com.grehotwordsgrouped;
 
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -17,6 +19,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    public void onClick(View v) {
+            Uri uri = Uri.parse("mailto:mail2me.mvk@gmail.com");
+
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
+        }
+
     public void test(View view) {
         Intent intent = new Intent(this, noun.class);
         intent.putExtra("a",5);
