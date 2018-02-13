@@ -1,8 +1,8 @@
 # GRE-WORDS-grouped-
-This app lets users to retrive words faster from memory during analytical writing by grouping words according to parts of Speech.
+This app lets users to retrive words faster from memory which would come in handy during analytical writing.Mostly We would be using the studied verbs and adjectives to embelish the content.Studying by grouping would make it easier to discard the nouns that you've studied and reduce the state space which would contribute to lesser 'word search' time complexity from your head :P (i.e. you'll have a better idea of what you know xD)  
   
   Instructions:-
     1.Click to view meaning.
     2.Long press to view an usage Scenario.
 
-PS:   People tend to remember the meaning for the words studied when asked in form of Choose the best answer but find it difficult to retrive words for essays.This app can help them to substitute common(Unprecise) words with more precise ones since grouping enables easy sentence completion.
+ 
